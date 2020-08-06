@@ -8,28 +8,56 @@ location.href="login.kakao";
 </script>	
 <% } %>
 
+<style>
+h3 { margin-top : 30px;}
 
-<body>
+</style>
 
+
+<center>
 <h3>영화랭킹</h3>
 <div id="result"></div>
+</center>	
 	<script>
 	$(document).ready(function(){
-			var search = $("#search").val();
-			console.log(search);
+// 			var search = $("#search").val();
+// 			console.log(search);
 		    $.get("movieok.kakao",
 		    function(data, status){
  		    	var html = "";
-// 		    	console.log(data['total']);
-// 		    	console.log(data.items);
-// 		    	$.each(data.items, function(key, field){
-// 		    		html += "<a href='" + field.link + "' target='_blank'>"
-// 		    		html += field.title + "</a><br>";
-// 		          });
-// 				$("#result").html(html);
+		    	console.log(">>>>>>>>"+ data.title);
+		    	console.log(data);
+		    	$.each(data, function(key, field){
+		    		html += "<a href='" + field.URL + "' target='_blank'>"
+		    		html += "<b>"+field.title + "</a><br></b>";
+		    		html += "<img src='" + field.imgurl + "'><br><br>"
+		          });
+				$("#result").html(html);
 		    });
 		  });
 	</script>
+
+<script>
+// 	$(document).ready(function(){
+// 		  $("#searchBtn").click(function(){
+// 			var search = $("#search").val();
+// 		    $.get("movieok.kakao",
+// 		    function(data, status){
+// 		    	var html = "";
+// 		    	console.log(data['imgurl']);
+// 		    	console.log(data.items); //이미지링크
+// 		    	$.each(data, function(key, field){
+// 		    		html += field.title + "</a><br>";
+// 		    		html += "<a href='" + field.link + "' target='_blank'>"
+// //		             $("div").append(field + " ");
+// //		     		console.log("Data: " + field.title);  // field['title']
+// 		          });
+// 				$("#result").html(html);
+// 		    });
+// 		  });
+// 		});
+	</script>
+
 
 </body>
 </html>
