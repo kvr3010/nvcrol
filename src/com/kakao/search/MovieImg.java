@@ -28,8 +28,8 @@ public class MovieImg {
 
 		System.out.println("이미지 불러옴");
 
-			//이미지 셀렉터
-			Elements menus = doc.select("#content > div.article > div.mv_info_area > div.poster > a > img");
+		//이미지 셀렉터
+		Elements menus = doc.select("#content > div.article > div.mv_info_area > div.poster > a > img");
 
 		for (Element menu : menus) {
 			//위 링크에 각각 접속해서 이미지 주소를 가져온다.

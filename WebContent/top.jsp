@@ -49,6 +49,9 @@
     <li class="nav-item">
       <a class="nav-link" href="movie.kakao">영화 순위</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="review.kakao">영화 후기</a>
+    </li>
   </ul>
 </nav>
 
