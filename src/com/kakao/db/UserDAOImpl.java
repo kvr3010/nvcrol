@@ -133,6 +133,7 @@ public class UserDAOImpl implements UserDAO {
             	user.setEmail(rs.getString("email")); 
             	user.setPw(rs.getString("pw"));
             	user.setName(rs.getString("name"));
+            	user.setNum(rs.getInt("num"));
             }
             else {
             	System.out.println("일치하는 정보 없음");
@@ -179,6 +180,7 @@ public class UserDAOImpl implements UserDAO {
             while(rs.next()){
             	UserDTO user = new UserDTO();
             	user.setName(rs.getString(2));
+            	user.setNum(rs.getInt("num"));
             	
             	dtolist.add(user);
             }

@@ -29,14 +29,15 @@ public class ReviewSubmitServlet extends HttpServlet {
 		ReviewDAO dao = new ReviewDAOImpl();
 		ReviewDTO dto = new ReviewDTO();
 		
-		String hanjul = request.getParameter("hanjul");
-		String sangse = request.getParameter("sangse");
+		String title = request.getParameter("hanjul");
+		String nae = request.getParameter("sangse");
+		int mb_num = Integer.parseInt(request.getParameter("unum"));
+		int mv_num = Integer.parseInt(request.getParameter("mnum"));
 		
-		dto.setTitle(hanjul);
-		dto.setNae(sangse);
-		
-		System.out.println(hanjul);
-		System.out.println(sangse);
+		dto.setMb_num(mb_num);
+		dto.setMv_num(mv_num);
+		dto.setTitle(title);
+		dto.setNae(nae);
 		
 		dao.review_insert(dto);
 		

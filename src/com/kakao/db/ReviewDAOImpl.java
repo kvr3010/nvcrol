@@ -14,12 +14,14 @@ public class ReviewDAOImpl implements ReviewDAO{
 
 		try{
 			conn = DB.conn(); 
-			String sql = "INSERT INTO review (nae, title, pyung, mv_num, mb_num) VALUES (?, ?,'5','2','2307')";
+			String sql = "INSERT INTO review (mv_num, mb_num, pyung, nae, title) VALUES ( ?, ?, 5, ?, ?)";
 			//제목이랑 내용만 db에 들어가는지 확인
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, dto.getNae());
-			pstmt.setString(2, dto.getTitle());
+			pstmt.setInt(1, dto.getMv_num());
+			pstmt.setInt(2, dto.getMb_num());
+			pstmt.setString(3, dto.getNae());
+			pstmt.setString(4, dto.getTitle());
 			
 			int count = pstmt.executeUpdate();
 			if( count == 0 ){
@@ -33,6 +35,8 @@ public class ReviewDAOImpl implements ReviewDAO{
 		
 		catch(Exception e){
 			System.out.println("데이터 입력 에러3: " + e);
+			System.out.println(dto.getMv_num());
+			System.out.println(dto.getMb_num());
 		}
 		finally{
 			try{

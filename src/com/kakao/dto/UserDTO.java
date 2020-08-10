@@ -1,6 +1,7 @@
 package com.kakao.dto;
 
 public class UserDTO {
+	private int num;
 	private String pw;
 	private String name;
 	private String email;
@@ -35,6 +36,13 @@ public class UserDTO {
 	}
 	public void setPw(String pw) {
 		this.pw = pw;
+	}
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
 	}
 	
 	

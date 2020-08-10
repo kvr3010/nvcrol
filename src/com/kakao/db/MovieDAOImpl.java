@@ -75,7 +75,7 @@ public class MovieDAOImpl implements MovieDAO {
 	        
 	        try {
 	        	conn = DB.conn();
-	        	String sql = "SELECT title,bae,gam,img FROM movie";
+	        	String sql = "SELECT title,bae,gam,img,num FROM movie";
 	        	stmt = conn.prepareStatement(sql);
 	        	rs = stmt.executeQuery(sql);
 
@@ -86,6 +86,7 @@ public class MovieDAOImpl implements MovieDAO {
 	            	mv.setBae(rs.getString(2));
 	            	mv.setGam(rs.getString(3));
 	            	mv.setImg(rs.getString(4));
+	            	mv.setNum(rs.getInt(5));
 	            	
 	            	dtolist.add(mv);
 	            }

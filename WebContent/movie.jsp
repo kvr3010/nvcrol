@@ -5,12 +5,10 @@
 <script>
 alert("로그인 후 이용 가능한 서비스 입니다.");
 location.href="login.kakao";
-</script>	
-<% } %>
+</script>
+	
+<% return; } %>
 
-<style>
-h3 { margin-top : 30px;}
-</style>
 
 
 <center>
@@ -25,7 +23,9 @@ h3 { margin-top : 30px;}
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">영화 리뷰</h4>
+          <div id="mvtitle"> </div>
+          <input type ="hidden" id="mv_num" value="">
+          <input type ="hidden" id="mb_num" value="">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -53,7 +53,7 @@ h3 { margin-top : 30px;}
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger" data-dismiss="modal" id ="submit">등록</button>
+          <button type="submit" class="btn btn-danger" data-dismiss="modal" id ="okBtn">등록</button>
         </div>
         
       </div>
@@ -64,88 +64,58 @@ h3 { margin-top : 30px;}
 
 	<script>
 	$(document).ready(function(){
-// 			var search = $("#search").val();
-// 			console.log(search);
 		    $.get("movieok.kakao",
 		    function(data, status){
  		    	var html = "";
 		    	console.log(">>>>>>>>"+ data['']);
 		    	console.log(data);
 		    	$.each(data, function(key, field){
-		    		html += "<a href='" + field.URL + "' target='_blank'>"
+		    		html += "<a href='" + field.URL + "' target='_blank'>";
 		    		html += "<b>"+field.title + "</a><br></b>";
 		    		html += "<img src='" + field.img + "'><br>";
-		    		html += "<input type = 'hidden' value='" + field.img + "'><br>";
-		    		html += "<button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal' >리뷰 쓰기</button><br><br>"
-		    		console.log(":::::::::"+key);
-		    		console.log(":::::::::"+field);
+		    		html += "<input type ='hidden' id='mv"+field.num+"' value='" +field.title+"'><br>";
+		    		html += "<button type='button' onclick='modinp(\""+field.num+"\")' class='btn btn-info'>리뷰 쓰기</button><br><br>";
 		          });
 				$("#result").html(html);
 		    });
 		  });
-
 	
+	function modinp(num){
+		$("#myModal").modal("show");
+		console.log(num);
+		var je = $("#mv"+num).val();
+		$("#mv_num").val(num);
+		$("#mb_num").val(<%=dto.getNum()%>);
+		console.log("#mv"+num);
+		console.log(je);
+		
+		html = '<h4 class="modal-title">' + je + '</h4>'
+		$("#mvtitle").html(html);
+		
 	
-		    $("#submit").click(function(){ 
+	};
+	
+	    $("#okBtn").click(function(){ 
 		    //비동기  
-		    	var hanjul=$("#hanjul").val();    
-		    	var sangse=$("#sangse").val();    
+		    	var u_num = $("#mb_num").val();
+		    	var m_num = $("#mv_num").val();
+		    	var sangse= $("#sangse").val();
+		    	var hanjul= $("#hanjul").val();    
+		    	
 		      //var email=$("#email").val();    
 		    	 $.post("reviewsubmit.kakao",
 		    			    {
-		    			      hanjul:hanjul,
-		    			      sangse:sangse
-		    			    },
-		    			    function(data,status){
-		    			    	if(data.trim()=="ok"){
-		    			      //	alert("중복된 메일입니다.");
-		    			    }else{
-		    			    	//alert("가입이 가능한 메일입니다.")
-		    			    	}
+		    		 		  unum  : u_num,
+		    		 		  mnum  : m_num,
+		    			      hanjul : hanjul,
+		    			      sangse : sangse
+		    		
 		    			    }
 		    			    	);
 		    	 
 		    	});
 
 	</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-// 	$(document).ready(function(){
-// 		  $("#searchBtn").click(function(){
-// 			var search = $("#search").val();
-// 		    $.get("movieok.kakao",
-// 		    function(data, status){
-// 		    	var html = "";
-// 		    	console.log(data['imgurl']);
-// 		    	console.log(data.items); //이미지링크
-// 		    	$.each(data, function(key, field){
-// 		    		html += field.title + "</a><br>";
-// 		    		html += "<a href='" + field.link + "' target='_blank'>"
-// //		             $("div").append(field + " ");
-// //		     		console.log("Data: " + field.title);  // field['title']
-// 		          });
-// 				$("#result").html(html);
-// 		    });
-// 		  });
-// 		});
-	</script>
-
-
+	
 </body>
 </html>
