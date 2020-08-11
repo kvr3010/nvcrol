@@ -74,6 +74,11 @@ public class Controller extends HttpServlet {
 			site = "review.jsp";
 		}else if(uri.equals("reviewsubmit.kakao")) {
 			site = "ReviewSubmitServlet";
+		}else if(uri.equals("movereview.kakao")) {
+			site = "reviewdetail.jsp";
+		}else if(uri.equals("reviewout.kakao")) {
+			site = "ReviewOutServlet";
+		
 		
 		}else if(uri.equals("logout.kakao")) {
 			site = "logout.jsp";

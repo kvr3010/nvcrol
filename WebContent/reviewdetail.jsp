@@ -20,7 +20,7 @@ location.href="login.kakao";
 			style="text-align: center; border: 1px solid #dddddd">						
 			<thead>						
 				<tr>					
-					<th style="background-color: #eeeeee; text-align: center;">글번호</th>				
+					<th style="background-color: #eeeeee; text-align: center;">글번dfdfsdfasdfasdfasdfasdf호</th>				
 					<th style="background-color: #eeeeee; text-align: center;">영화제목</th>				
 					<th style="background-color: #eeeeee; text-align: center;">영화평점</th>				
 					<th style="background-color: #eeeeee; text-align: center;">한줄평</th>				
@@ -64,11 +64,11 @@ location.href="login.kakao";
 	  });
 	
 	function moverev(no){
+		locatino.href="movereview.kakao"
+		console.log(no);
 		var bunho = $("#rev"+no).val();
-		//ReviewOutServlet로 글번호 넘기기
-		alert(bunho);
-		location.href="movereview.kakao"; //글번호 ReviewOutServlet 넘김 ->받아와서 reviewdetail.jsp에 출력
-//		alert(no);
+		console.log("#mv"+num);
+		console.log(je);
 		
 // 		html = '<h4 class="modal-title">' + je + '</h4>'
 // 		$("#mvtitle").html(html);

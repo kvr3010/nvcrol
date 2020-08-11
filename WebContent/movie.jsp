@@ -109,11 +109,16 @@ location.href="login.kakao";
 		    		 		  mnum  : m_num,
 		    			      hanjul : hanjul,
 		    			      sangse : sangse
-		    		
-		    			    }
-		    			    	);
-		    	 
-		    	});
+		    			    },
+		    			    function(data, status){
+		    			    	if (data.trim() == "ok"){
+		    			    		alert("후기가 저장 되었습니다.");
+		    			    		location.reload();
+		    			    	}else {
+		    			    		alert("저장에 실패했습니다. \n관리자에게 문의")
+		    			    	}
+		    			    });
+              	    	       });
 
 	</script>
 	
